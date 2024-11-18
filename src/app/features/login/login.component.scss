@@ -1,0 +1,140 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--light-gray);
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  &__logo {
+    margin-right: 1rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    color: var(--dark-grey);
+    font-weight: bold;
+  }
+}
+
+.login-form {
+  background: var(--white);
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+
+  &__heading {
+    font-size: 1.5rem;
+    color: var(--dark-grey);
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    color: var(--grey);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    label {
+      display: block;
+      font-size: 0.7rem;
+      margin-bottom: 0.2rem;
+      color: var(--dark-grey);
+    }
+
+    .input-container {
+      position: relative;
+      width: 90%;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      padding-left: 30px;
+      border: 1px solid var(--borders);
+      border-radius: 8px;
+      font-size: 0.9rem;
+
+      &:focus {
+        border-color: var(--purple);
+        outline: none;
+      }
+
+      &.ng-invalid.submit {
+        border-color: var(--red);
+      }
+    }
+
+    .icon-mail, .icon-lock {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #888;
+    }
+
+    .icon-mail {
+      font-size: 10px;
+    }
+
+    .icon-lock {
+      font-size: 15px;
+    }
+
+    &.error label{
+      color: var(--red);
+    }
+
+    &.error input {
+      border-color: red;
+    }
+
+    .error {
+      position: absolute;
+      color: var(--red);
+      font-size: 0.8rem;
+      margin-top: 0.3rem;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    padding: 0.8rem;
+    background: var(--purple);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--hover-purple);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__footer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+
+    .login-form__link {
+      color: var(--purple);
+      cursor: pointer;
+    }
+  }
+}

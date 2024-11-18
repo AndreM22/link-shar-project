@@ -1,0 +1,50 @@
+<section class="login-container">
+  <div class="login-header">
+    <img ngSrc="assets/images/devLinkLogo.png" alt="Devlinks Logo" class="login-header__logo" width="30" height="30"/>
+    <h1 class="login-header__title">devlinks</h1>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <h2 class="login-form__heading">Login</h2>
+    <p class="login-form__description">
+      Add your details below to get back into the app
+    </p>
+
+    <div class="form-group" [class.error]="emailError">
+      <label for="email">Email address</label>
+      <div class="input-container">
+        <span class="icon-mail"></span>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="e.g. alex@email.com"
+        />
+      </div>
+      <div class="error" *ngIf="emailError">{{ emailError }}</div>
+    </div>
+
+    <div class="form-group" [class.error]="passwordError">
+      <label for="password">Password</label>
+      <div class="input-container">
+        <span class="icon-lock"></span>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+      </div>
+      <div class="error" *ngIf="passwordError">{{ passwordError }}</div>
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid" class="login-form__button">
+      Login
+    </button>
+
+    <p class="login-form__footer">
+      Don’t have an account?
+      <a routerLink="/register" class="login-form__link">Create account</a>
+    </p>
+  </form>
+</section>
