@@ -1,0 +1,9 @@
+<div class="platform-link" [ngStyle]="{ 'background-color': currentColor }">
+  <span [ngClass]="currentIcon"></span>
+
+  <span class="platform-name">{{ currentName }}</span>
+
+  <button class="redirect-button"
+          *ngIf="!!platformLink"
+          (click)="redirectToLink()">➔</button>
+</div>

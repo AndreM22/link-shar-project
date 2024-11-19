@@ -1,1 +1,55 @@
-<p>register works!</p>
+<section class="register-container">
+  <div class="register-header">
+    <img ngSrc="assets/images/devLinkLogo.png" alt="Devlinks Logo" class="register-header-logo" width="30" height="30" />
+
+    <h1 class="register-header-title">devlinks</h1>
+  </div>
+
+  <form [formGroup]="createAccountForm" (ngSubmit)="onSubmit()" class="register-form">
+    <h2 class="register-form-heading">Create Account</h2>
+
+    <p class="register-form-description">Let’s get you started sharing your links!</p>
+
+    <div class="form-group" [class.error]="emailError && submitted">
+      <label for="email">Email address</label>
+      <div class="input-container" [class.error]="emailError && submitted">
+        <span class="icon-mail"></span>
+
+        <input id="email" type="email" formControlName="email" placeholder="e.g. alex@email.com" />
+
+        <span class="error" *ngIf="emailError && submitted">{{ emailError }}</span>
+      </div>
+    </div>
+
+    <div class="form-group" [class.error]="passwordError && submitted">
+      <label for="password">Create password</label>
+      <div class="input-container" [class.error]="passwordError && submitted">
+        <span class="icon-lock"></span>
+
+        <input id="password" type="password" formControlName="password" placeholder="Enter your password" />
+
+        <span class="error" *ngIf="passwordError && submitted">{{ passwordError }}</span>
+      </div>
+    </div>
+
+    <div class="form-group" [class.error]="confirmPasswordError && submitted">
+      <label for="confirmPassword">Confirm Password</label>
+      <div class="input-container" [class.error]="confirmPasswordError && submitted">
+        <span class="icon-lock"></span>
+
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="Re-enter your password" />
+
+        <span class="error" *ngIf="confirmPasswordError && submitted">{{ confirmPasswordError }}</span>
+      </div>
+    </div>
+
+    <p class="password-hint">Password must contain at least 8 characters</p>
+
+    <button type="submit" class="register-form-button">Create new account</button>
+
+    <p class="register-form-footer">
+      Already have an account?
+      <a routerLink="/login" class="register-form-link">Login</a>
+    </p>
+  </form>
+</section>

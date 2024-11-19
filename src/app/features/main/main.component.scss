@@ -1,0 +1,114 @@
+.main-container {
+  display: flex;
+  height: 100%;
+  background-color: var(--light-gray);
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+  .main-header-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    height: 5%;
+    background-color: var(--white);
+    width: calc(100% - 64px);
+    margin: 16px;
+    padding: 16px;
+
+    .register-dev {
+      display: flex;
+      align-items: center;
+
+      &-logo {
+        margin-right: 1rem;
+      }
+
+      &-title {
+        font-size: 2rem;
+        color: var(--dark-grey);
+        font-weight: bold;
+      }
+    }
+
+    .navigation-buttons {
+      display: flex;
+      gap: 1rem;
+
+      .nav-button {
+        background: transparent;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1rem;
+        color: var(--grey);
+        border-radius: 8px;
+        transition: background-color 0.3s;
+        font-weight: 600;
+
+        &:hover {
+          background-color: var(--light-purple);
+          color: var(--purple);
+        }
+
+        &.active {
+          background-color: var(--light-purple);
+          color: var(--purple);
+        }
+
+        .icon {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .preview-button {
+      background-color: var(--white);
+      color: var(--purple);
+      border: 1px solid var(--purple);
+      cursor: pointer;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+      font-weight: 600;
+
+      &:hover {
+        background-color: var(--hover-purple);
+      }
+    }
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--light-gray);
+    height: calc(100% - 32px);
+    width: calc(100% - 32px);
+    gap: 24px;
+    padding: 16px;
+
+    .main-cell-container {
+      display: flex;
+      background-color: var(--white);
+      height: 100%;
+      width: 40%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-form-container {
+      background-color: var(--white);
+      height: 100%;
+      width: 60%;
+      display: flex;
+    }
+  }
+}

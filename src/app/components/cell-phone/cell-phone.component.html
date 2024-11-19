@@ -1,0 +1,12 @@
+<article class="cell-phone-container">
+  <div class="cell-phone-avatar"></div>
+
+  <div class="cell-phone-name" [class.placeholder]="!name">{{ name || '' }}</div>
+
+  <div class="cell-phone-email">{{ email }}</div>
+
+  <div *ngFor="let platformLink of userPlatforms; let i = index">
+    <platform-link [platformLink]="platformLink"></platform-link>
+  </div>
+
+</article>

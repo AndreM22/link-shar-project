@@ -1,0 +1,141 @@
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--light-gray);
+
+  .register-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    &-logo {
+      margin-right: 1rem;
+    }
+
+    &-title {
+      font-size: 2rem;
+      color: var(--dark-grey);
+      font-weight: bold;
+    }
+  }
+
+  .register-form {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 450px;
+
+    &-heading {
+      font-size: 2rem;
+      color: var(--dark-grey);
+      margin-bottom: 0.5rem;
+    }
+
+    &-description {
+      color: var(--grey);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+
+      label {
+        display: block;
+        font-size: 0.7rem;
+        margin-bottom: 0.2rem;
+        color: var(--dark-grey);
+      }
+
+      .input-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+        gap: 8px;
+        width: 90%;
+        padding: 0.8rem;
+        border: 1px solid var(--borders);
+        border-radius: 8px;
+        transition: border-color 0.3s;
+
+        &:focus-within {
+          border-color: var(--purple);
+        }
+
+        &.error {
+          border-color: var(--red);
+        }
+
+        input {
+          flex: 1;
+          border: none;
+          outline: none;
+          font-size: 0.9rem;
+        }
+
+        .icon-mail {
+          color: var(--grey);
+          font-size: 0.8rem;
+        }
+
+        .icon-lock {
+          color: var(--grey);
+          font-size: 1rem;
+        }
+
+        .error {
+          color: var(--red);
+          font-size: 0.6rem;
+          white-space: nowrap;
+        }
+      }
+
+      &.error label {
+        color: var(--red);
+      }
+    }
+
+    .password-hint {
+      font-size: 0.75rem;
+      color: var(--grey);
+      margin-bottom: 1.5rem;
+    }
+
+    &-button {
+      width: 100%;
+      padding: 0.8rem;
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--hover-purple);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    &-footer {
+      color: var(--grey);
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+
+      .register-form-link {
+        color: var(--purple);
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+  }
+}

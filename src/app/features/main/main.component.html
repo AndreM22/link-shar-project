@@ -1,1 +1,41 @@
-<p>main works!</p>
+<article class="main-container">
+  <section class="main-header-container">
+    <div class="register-dev">
+      <img ngSrc="assets/images/devLinkLogo.png" alt="Devlinks Logo" class="register-dev-logo" width="30" height="30"/>
+
+      <h1 class="register-dev-title">devlinks</h1>
+    </div>
+
+    <div class="navigation-buttons">
+      <button
+        class="nav-button"
+        [routerLink]="['/main/edit-links']"
+        routerLinkActive="active">
+        <span class="icon-clip"></span> Links
+      </button>
+
+      <button
+        class="nav-button"
+        [routerLink]="['/main/edit-profile']"
+        routerLinkActive="active">
+        <span class="icon-profile"></span> Profile Details
+      </button>
+    </div>
+
+    <button class="preview-button" [routerLink]="['/preview']">
+      Preview
+    </button>
+  </section>
+
+  <section class="main-content">
+    <div class="main-cell-container">
+      <cell-phone></cell-phone>
+    </div>
+
+    <div class="main-form-container">
+      <router-outlet/>
+    </div>
+  </section>
+
+
+</article>
