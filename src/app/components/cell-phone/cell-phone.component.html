@@ -5,8 +5,9 @@
 
   <div class="cell-phone-email">{{ email }}</div>
 
-  <div *ngFor="let platformLink of userPlatforms; let i = index">
-    <platform-link [platformLink]="platformLink"></platform-link>
+  <div class="cell-phone-list-container">
+    <div *ngFor="let platformLink of userPlatforms; let i = index">
+      <platform-link [platformLink]="platformLink"></platform-link>
+    </div>
   </div>
-
 </article>

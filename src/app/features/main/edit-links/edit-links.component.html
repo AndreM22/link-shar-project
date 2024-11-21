@@ -1,1 +1,40 @@
-<p>edit-links works!</p>
+<article class="edit-links-container">
+  <section class="edit-links-header">
+    <span class="edit-links-header-title">Customize your links</span>
+
+    <span class="edit-links-header-description">Add/edit/remove links below and then share all your profiles with the world!</span>
+  </section>
+
+  <section class="edit-links-list-container">
+    <button class="edit-links-header-button" (click)="addLink()">+ Add new link</button>
+
+    <div class="edit-links-empty-list-place-holder" *ngIf="platformLinks.length === 0">
+      <img ngSrc="assets/images/empty-list.png" alt="Devlinks Logo" class="login-header-logo" width="250" height="161"/>
+
+      <span class="edit-links-empty-list-place-holder-title">Let’s get you started</span>
+
+      <span class="edit-links-empty-list-place-holder-description">Use the “Add new link” button to get started. Once you have more than one link, you can reorder and edit them. We’re here to help you share your profiles with everyone!</span>
+    </div>
+
+    <div cdkDropList
+         [cdkDropListData]="platformLinks"
+         (cdkDropListDropped)="drop($event)"
+         class="drop-list">
+      <div *ngFor="let link of platformLinks; let i = index"
+           cdkDrag
+           class="drag-item">
+        <edit-platform-link
+          [linkNumber]="i + 1"
+          [platformLink]="link"
+          (linkChange)="onLinkChange($event, i)"
+          (platformChange)="onPlatformChange($event, i)"
+          (remove)="removeLink(i)">
+        </edit-platform-link>
+      </div>
+    </div>
+  </section>
+
+  <section class="edit-links-footer">
+    <button class="edit-links-footer-button" disabled>Save</button>
+  </section>
+</article>

@@ -11,6 +11,7 @@
   --red: #FF3939;
 
   font-family: "Instrument Sans", sans-serif;
+  letter-spacing: 0.5px;
 
   body {
     margin: 0;
@@ -18,6 +19,14 @@
     width: 100%;
 
     button {
+      font-family: "Instrument Sans", sans-serif;
+    }
+
+    input {
+      font-family: "Instrument Sans", sans-serif;
+    }
+
+    select {
       font-family: "Instrument Sans", sans-serif;
     }
   }

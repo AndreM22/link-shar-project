@@ -1,0 +1,59 @@
+<article class="edit-platform-link">
+  <section class="edit-platform-link-header">
+    <span>=  Link #{{ linkNumber }}</span>
+
+    <button class="edit-platform-link-remove-button" (click)="onRemove()">Remove</button>
+  </section>
+
+  <section class="edit-platform-link-platform">
+    <span>Platform</span>
+
+    <div class="edit-platform-link-platform-dropdown">
+      <div
+        class="edit-platform-link-selected-item"
+        [class.open]="dropdownOpen"
+        (click)="toggleDropdown()">
+
+        <span
+          class="edit-platform-link-platform-icon"
+          [ngClass]="PLATFORM_ICONS[selectedPlatform]"
+        ></span>
+
+        {{ PLATFORM_NAMES[selectedPlatform] }}
+
+        <span class="edit-platform-link-arrow"><</span>
+      </div>
+
+      <div class="edit-platform-link-dropdown-options" *ngIf="dropdownOpen">
+        <div
+          class="edit-platform-link-dropdown-option"
+          *ngFor="let platform of platforms"
+          (click)="selectPlatform(platform)">
+
+          <span
+            class="edit-platform-link-platform-icon"
+            [ngClass]="PLATFORM_ICONS[platform]">
+          </span>
+
+          {{ PLATFORM_NAMES[platform] }}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="edit-platform-link-input">
+    <label for="link-input">Link</label>
+    <div class="edit-platform-link-input-container">
+      <span class="icon-clip"></span>
+
+      <input
+        id="link-input"
+        type="text"
+        [(ngModel)]="link"
+        (ngModelChange)="onInputChange()"
+        placeholder="e.g. https://www.github.com/johnappleseed"
+        class="edit-platform-link-text"/>
+    </div>
+  </section>
+</article>

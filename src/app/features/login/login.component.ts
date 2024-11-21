@@ -92,7 +92,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (controls['email']?.errors) {
       const errorType = Object.keys(controls['email'].errors)[0];
       this.emailError = errorMessages[errorType] || 'Invalid email';
-      console.info(this.emailError)
     }
 
     if (controls['password']?.errors) {
