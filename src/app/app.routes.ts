@@ -18,7 +18,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'edit-links', pathMatch: 'full' }
     ]
   },
-  { path: 'preview', component: PreviewComponent },
+  { path: 'preview/:userId', component: PreviewComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }
 ];

@@ -95,6 +95,7 @@ export class EditLinksComponent implements OnInit {
     const componentRef = this._viewContainerRef.createComponent(componentFactory);
 
     componentRef.instance.message = 'Your changes have been successfully saved!';
+    componentRef.instance.iconClass = 'icon-save';
     timer(5000)
       .subscribe(() => componentRef.destroy())
   }

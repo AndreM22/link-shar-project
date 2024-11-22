@@ -1,1 +1,23 @@
-<p>preview works!</p>
+<article class="preview-container">
+  <div class="preview-decorator"></div>
+
+  <section class="preview-header">
+    <button class="preview-btn-back" (click)="navigateToEditor()">Back to Editor</button>
+
+    <button class="preview-btn-share" (click)="copyCurrentLink()">Share Link</button>
+  </section>
+
+  <section class="preview-card">
+    <div class="preview-avatar" [ngStyle]="{ 'background-image': avatarUrl ? 'url(' + avatarUrl + ')' : 'none' }"></div>
+
+    <h2 class="preview-name">{{ fullName }}</h2>
+
+    <p class="preview-email">{{ user?.email || '' }}</p>
+
+    <div class="preview-links">
+      <div *ngFor="let platformLink of userPlatforms; let i = index">
+        <platform-link [platformLink]="platformLink"></platform-link>
+      </div>
+    </div>
+  </section>
+</article>

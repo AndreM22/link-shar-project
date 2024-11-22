@@ -8,7 +8,7 @@ import {
   AfterViewInit,
   ChangeDetectorRef
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {timer} from 'rxjs';
 
 @Component({
@@ -19,13 +19,15 @@ import {timer} from 'rxjs';
   styleUrls: ['./temporary-message.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TemporaryMessageComponent implements AfterViewInit{
+export class TemporaryMessageComponent implements AfterViewInit {
   @Input() public message: string;
+  @Input() public iconClass: string;
 
   public opacity: number;
 
   constructor(private _cdr: ChangeDetectorRef) {
     this.message = '';
+    this.iconClass = '';
     this.opacity = 1;
   }
 

@@ -65,4 +65,8 @@ export class AuthService {
   public updateUserLinks(links: PlatformLink[]): void {
     this._loggedInUser!.platforms = links;
   }
+
+  public getUser(userId: string): User | null {
+    return this._users.get(userId) || null;
+  }
 }

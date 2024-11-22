@@ -23,11 +23,11 @@ import {User} from '../../interfaces/user.interface';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainComponent implements OnInit {
+  public userId: string;
 
   constructor(private _previewLinksService: PreviewLinksService,
-              private _authService: AuthService,
-              private router: Router) {
-
+              private _authService: AuthService) {
+    this.userId = '';
   }
 
   ngOnInit(): void {
@@ -48,8 +48,10 @@ export class MainComponent implements OnInit {
 
     if (loggedInUser) {
       this._initPreview(loggedInUser);
+      this.userId = loggedInUser.userId;
     } else if (defaultUser) {
       this._initPreview(defaultUser);
+      this.userId = defaultUser.userId;
     }
   }
 }
