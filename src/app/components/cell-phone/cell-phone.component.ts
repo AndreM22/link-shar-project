@@ -3,7 +3,7 @@ import {AuthService} from '../../services/auth.service';
 import {defaultUsers} from '../../consts/default-users';
 import {PlatformLinkComponent} from '../platform-link/platform-link.component';
 import {PlatformLink} from '../../interfaces/user.interface';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgForOf, NgIf, NgStyle} from '@angular/common';
 import {PreviewLinksService} from '../../services/preview-links.service';
 import {timer} from 'rxjs';
 
@@ -13,28 +13,33 @@ import {timer} from 'rxjs';
   imports: [
     PlatformLinkComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    NgStyle
   ],
   templateUrl: './cell-phone.component.html',
   styleUrl: './cell-phone.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CellPhoneComponent implements OnInit {
+export class CellPhoneComponent {
   public email: string;
-  public name: string;
+  public firstName: string;
+  public lastName: string;
   public userPlatforms: PlatformLink[];
+  public avatarUrl: string | null;
 
   constructor(private _previewLinksService: PreviewLinksService,
               private _authService: AuthService,
               private _cdr: ChangeDetectorRef) {
     this.email = '';
-    this.name = '';
+    this.firstName = '';
+    this.lastName = '';
     this.userPlatforms = [];
+    this.avatarUrl = null;
     effect(() => this._updateLinkList(this._previewLinksService.getPreviewLinkSignal()()));
-  }
-
-  ngOnInit(): void {
-    this._initialize();
+    effect(() => this._updateFirstName(this._previewLinksService.getPreviewFirstNameSignal()()));
+    effect(() => this._updateLastName(this._previewLinksService.getPreviewLastNameSignal()()));
+    effect(() => this._updateEmail(this._previewLinksService.getPreviewEmailSignal()()));
+    effect(() => this._updateAvatarUrl(this._previewLinksService.getPreviewImgSignal()()));
   }
 
   private _updateLinkList(linkList: PlatformLink[]): void {
@@ -45,14 +50,32 @@ export class CellPhoneComponent implements OnInit {
     } else {
       this.userPlatforms = linkList;
     }
-    this.userPlatforms = this.userPlatforms.map(item => ({ ...item }));
+    this.userPlatforms = this.userPlatforms.map(item => ({...item}));
 
     this._cdr.markForCheck();
   }
 
-  private _initialize(): void {
-    const user = this._authService.getLoggedInUser() || defaultUsers[0];
-    this.email = user.email.trim();
-    this.name = `${user.firstName || ''} ${user.lastName || ''}`.trim();
+  private _updateFirstName(firstName: string): void {
+    this.firstName = firstName;
+    this._cdr.markForCheck();
+  }
+
+  private _updateLastName(lastName: string): void {
+    this.lastName = lastName;
+    this._cdr.markForCheck();
+  }
+
+  private _updateEmail(email: string): void {
+    this.email = email;
+    this._cdr.markForCheck();
+  }
+
+  private _updateAvatarUrl(url: string): void {
+    if (url) {
+      this.avatarUrl = url;
+    } else {
+      this.avatarUrl = null;
+    }
+    this._cdr.markForCheck();
   }
 }

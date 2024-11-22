@@ -14,7 +14,8 @@ export const routes: Routes = [
     component: MainComponent,
     children: [
       { path: 'edit-links', component: EditLinksComponent },
-      { path: 'edit-profile', component: EditProfileComponent }
+      { path: 'edit-profile', component: EditProfileComponent },
+      { path: '', redirectTo: 'edit-links', pathMatch: 'full' }
     ]
   },
   { path: 'preview', component: PreviewComponent },

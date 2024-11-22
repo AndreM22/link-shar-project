@@ -1,7 +1,7 @@
 <article class="cell-phone-container">
-  <div class="cell-phone-avatar"></div>
+  <div class="cell-phone-avatar" [ngStyle]="{ 'background-image': avatarUrl ? 'url(' + avatarUrl + ')' : 'none' }"></div>
 
-  <div class="cell-phone-name" [class.placeholder]="!name">{{ name || '' }}</div>
+  <div class="cell-phone-name" [class.placeholder]="!firstName && !lastName">{{ firstName || '' }} {{ lastName || '' }}</div>
 
   <div class="cell-phone-email">{{ email }}</div>
 

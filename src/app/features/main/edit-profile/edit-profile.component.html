@@ -1,1 +1,98 @@
-<p>edit-profile works!</p>
+<section class="edit-profile-container">
+  <span class="edit-profile-title">Profile Details</span>
+
+  <p class="edit-profile-description">
+    Add your details to create a personal touch to your profile.
+  </p>
+
+  <div class="edit-profile-picture">
+    <p class="edit-profile-picture-label">Profile picture</p>
+
+    <div class="edit-profile-upload-container">
+      <div
+        class="edit-profile-upload"
+        (click)="fileInput.click()"
+        [ngStyle]="{ 'background-image': profilePicture ? 'url(' + profilePicture + ')' : 'none' }">
+
+        <span *ngIf="!profilePicture" class="icon-img"></span>
+
+        <span *ngIf="!profilePicture">+ Upload Image</span>
+      </div>
+
+      <input
+        type="file"
+        hidden
+        #fileInput
+        accept="image/png, image/jpeg"
+        (change)="onFileSelected($event)"/>
+    </div>
+
+    <p class="edit-profile-hint">
+      Image must be below 1024x1024px. Use PNG or JPG format.
+    </p>
+  </div>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="edit-profile-form">
+    <div class="edit-profile-form-inputs-container">
+      <div class="edit-profile-input-group">
+
+        <label for="firstName">First name*</label>
+
+        <div class="edit-profile-input-container" [class.error]="profileForm.get('firstName')?.invalid && submitted">
+          <input
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="e.g. John"/>
+
+          <span
+            class="edit-profile-error"
+            *ngIf="profileForm.get('firstName')?.invalid && submitted">
+        Can’t be empty
+      </span>
+        </div>
+      </div>
+
+      <div
+        class="edit-profile-input-group"
+        [class.error]="profileForm.get('lastName')?.invalid && submitted">
+        <label for="lastName">Last name*</label>
+
+        <div class="edit-profile-input-container" [class.error]="profileForm.get('lastName')?.invalid && submitted">
+          <input
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="e.g. Appleseed"/>
+
+          <span
+            class="edit-profile-error"
+            *ngIf="profileForm.get('lastName')?.invalid && submitted"
+          >Can’t be empty</span>
+        </div>
+      </div>
+
+      <div
+        class="edit-profile-input-group"
+        [class.error]="profileForm.get('email')?.invalid && submitted">
+
+        <label for="email">Email</label>
+
+        <div class="edit-profile-input-container" [class.error]="profileForm.get('email')?.invalid && submitted">
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="e.g. email@example.com"/>
+
+          <span
+            class="edit-profile-error"
+            *ngIf="profileForm.get('email')?.invalid && submitted"
+          >Invalid Email</span>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="edit-profile-submit">Submit</button>
+  </form>
+</section>

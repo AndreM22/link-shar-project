@@ -17,6 +17,8 @@
     height: 80px;
     border-radius: 50%;
     background-color: #eeeeee;
+    background-size: cover;
+    background-position: center;
   }
 
   .cell-phone-name {
@@ -27,6 +29,9 @@
     color: var(--dark-grey);
     font-size: 18px;
     font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &.placeholder {
       background-color: #eeeeee;
@@ -37,6 +42,9 @@
     text-align: center;
     color: var(--grey);
     font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .cell-phone-list-container {

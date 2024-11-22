@@ -4,6 +4,7 @@
   <span class="platform-name">{{ currentName }}</span>
 
   <button class="redirect-button"
+          [disabled]="currentName.length === 0"
           *ngIf="!!platformLink"
           (click)="redirectToLink()">➔</button>
 </div>

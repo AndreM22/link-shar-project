@@ -64,7 +64,7 @@ export class PlatformLinkComponent implements OnInit {
   }
 
   private _initialize(): void {
-    if (!!this.platformLink) {
+    if (!!this.platformLink.platform) {
       this.currentColor = this._platformColors[this.platformLink.platform];
       this.currentName = platformNames[this.platformLink.platform];
       this.currentIcon = platformIcons[this.platformLink.platform];
@@ -73,6 +73,7 @@ export class PlatformLinkComponent implements OnInit {
       this.currentColor = '#EEEEEE';
       this.currentName = '';
       this.currentIcon = '';
+      this.textColor = '#EEEEEE'
     }
   }
 }

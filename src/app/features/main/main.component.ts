@@ -5,6 +5,7 @@ import {CellPhoneComponent} from '../../components/cell-phone/cell-phone.compone
 import {PreviewLinksService} from '../../services/preview-links.service';
 import {AuthService} from '../../services/auth.service';
 import {defaultUsers} from '../../consts/default-users';
+import {User} from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-main',
@@ -33,7 +34,22 @@ export class MainComponent implements OnInit {
     this._initialize();
   }
 
+  private _initPreview(user: User): void {
+    this._previewLinksService.setPreviewLinks(user.platforms);
+    this._previewLinksService.setPreviewEmail(user.email);
+    user.firstName && this._previewLinksService.setPreviewFirstName(user.firstName);
+    user.lastName && this._previewLinksService.setPreviewLastName(user.lastName);
+    user.imgUrl && this._previewLinksService.setPreviewImg(user.imgUrl);
+  }
+
   private _initialize() {
-    this._previewLinksService.setPreviewLinks((this._authService.getLoggedInUser() || defaultUsers[0]).platforms);
+    const loggedInUser: User | null = this._authService.getLoggedInUser();
+    const defaultUser = defaultUsers.get('1');
+
+    if (loggedInUser) {
+      this._initPreview(loggedInUser);
+    } else if (defaultUser) {
+      this._initPreview(defaultUser);
+    }
   }
 }
